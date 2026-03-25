@@ -1,0 +1,85 @@
+:root {
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+    transition: background-color 0.5s ease, color 0.3s ease;
+}
+
+
+body.type-normal { --bg-color: #A8A77A; color: white; }
+body.type-fire { --bg-color: #EE8130; color: white; }
+body.type-water { --bg-color: #6390F0; color: white; }
+body.type-electric { --bg-color: #F7D02C; color: #333; }
+body.type-grass { --bg-color: #7AC74C; color: white; }
+body.type-ice { --bg-color: #96D9D6; color: #333; }
+
+
+body.type-fighting { --bg-color: #C22E28; color: white; }
+body.type-poison { --bg-color: #A33EA1; color: white; }
+body.type-ground { --bg-color: #E2BF65; color: #333; }
+body.type-flying { --bg-color: #A98FF3; color: white; }
+body.type-psychic { --bg-color: #F95587; color: white; }
+body.type-bug { --bg-color: #A6B91A; color: white; }
+
+
+body.type-rock { --bg-color: #B6A136; color: white; }
+body.type-ghost { --bg-color: #735797; color: white; }
+body.type-dragon { --bg-color: #6F35FC; color: white; }
+body.type-steel { --bg-color: #B7B7CE; color: #333; }
+body.type-dark { --bg-color: #705746; color: white; }
+body.type-fairy { --bg-color: #D685AD; color: white; }
+
+body.type-default { --bg-color: #f4f4f4; color: #333; }
+
+
+#infoPokemon {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    color: #333;
+    width: 300px;
+}
+
+.pokemon-card img {
+    width: 180px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+}
+
+.stats {
+    text-align: left;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+input, button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #555;
+}
