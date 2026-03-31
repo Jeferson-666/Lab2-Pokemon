@@ -1,5 +1,5 @@
 //historia 3 Lester
-import { Servicios } from './Servicios.js';
+import { Servicios } from '../servicios/Servicios.js';
 
 const listaSugerencias = document.getElementById('pokemonSuggestions');
 
