@@ -1,4 +1,5 @@
-import { Servicios } from './services/Servicios.js';
+//historia 3 Lester
+import { Servicios } from './Servicios.js';
 
 const listaSugerencias = document.getElementById('pokemonSuggestions');
 
@@ -17,8 +18,9 @@ async function cargarSugerenciasIniciales() {
 
         listaSugerencias.appendChild(fragmento);
         
-        alert("Historia 4: Sugerencias cargadas correctamente.");
+        alert("Sugerencias cargadas exitosamente.");
     } catch (error) {
-        alert("Historia 4: Falló la carga de sugerencias.");
+        alert("Error al cargar las sugerencias.");
     }//try cath
 }//fin funcion cargar sugerencias iniciales
+cargarSugerenciasIniciales();//Llamada a la función para cargar las sugerencias al iniciar la página
