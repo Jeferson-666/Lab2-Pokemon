@@ -86,3 +86,23 @@ header {
     font-size: 14px;
     text-transform: capitalize;
 }
+
+.spinner{
+    width: 30px;
+    height: 30px;
+    border: solid 4px;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: Spin 1s linear infinite;
+    margin: 20px auto;
+    display: none;
+}
+
+@keyframes Spin {
+    from{
+        transform: rotate(0deg)
+    }to{
+        transform: rotate(360deg);
+    }
+
+}
