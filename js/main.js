@@ -26,7 +26,7 @@ inputNombrePokemon.addEventListener('keypress', (event) => {
 });
 
 async function buscarPokemon(nombre) {
-    sectionInfoPokemon.innerHTML = '<p>Buscando Pokémon...</p>';
+    sectionInfoPokemon.innerHTML=`<div class="spinner"></div>`;
     sectionInfoPokemon.className = 'info-pokemon';
 
     try {
