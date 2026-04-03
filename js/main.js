@@ -2,28 +2,11 @@ import { Pokemon } from './modelos/Pokemon.js';
 import { TipoColor } from './modelos/TipoColor.js';
 import { Servicios } from './servicios/Servicios.js';
 import './ui/Sugerencias.js';
+import {iniciarEventosBusqueda} from './eventos/eventosBusqueda.js';
 
 const btnBuscar = document.getElementById('btnBuscar');
 const inputNombrePokemon = document.getElementById('pokemonName');
 const sectionInfoPokemon = document.getElementById('infoPokemon');
-
-btnBuscar.addEventListener('click', () => {
-    const nombre = inputNombrePokemon.value.trim().toLowerCase();
-
-    if (nombre === '') {
-        sectionInfoPokemon.innerHTML = '<p>Escribe el nombre de un Pokémon.</p>';
-        sectionInfoPokemon.className = 'info-pokemon';
-        return;
-    }
-
-    buscarPokemon(nombre);
-});
-
-inputNombrePokemon.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        btnBuscar.click();
-    }
-});
 
 async function buscarPokemon(nombre) {
     sectionInfoPokemon.innerHTML=`<div class="spinner"></div>`;
@@ -88,4 +71,8 @@ function mostrarInfoPokemon(pokemon) {
             </div>
         </div>
     `;
+
+    
 }
+
+iniciarEventosBusqueda(btnBuscar,inputNombrePokemon,buscarPokemon,sectionInfoPokemon);
