@@ -18,7 +18,7 @@ async function cargarSugerenciasIniciales() {
 
         listaSugerencias.appendChild(fragmento);
         
-        alert("Sugerencias cargadas exitosamente.");
+        
     } catch (error) {
         alert("Error al cargar las sugerencias.");
     }//try cath
