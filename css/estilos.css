@@ -87,47 +87,6 @@ header {
     text-transform: capitalize;
 }
 
-<<<<<<< HEAD
-/*Estilos para las mini tarjetas */
-.seccion-equipo {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.mini-tarjeta {
-    display: flex;
-    align-items: center;
-    background: white;
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 180px;
-}
-
-.mini-img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.mini-nombre {
-    font-weight: bold;
-    text-transform: capitalize;
-    margin: 0;
-}
-
-.btn-eliminar {
-    margin-left: auto;
-    background: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-=======
 .spinner{
     width: 30px;
     height: 30px;
@@ -145,5 +104,4 @@ header {
         transform: rotate(360deg);
     }
 
->>>>>>> c831f585d014620ea752b4b03c2a0a94e5a49de9
 }

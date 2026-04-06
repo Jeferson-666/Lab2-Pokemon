@@ -47,8 +47,8 @@ function traducirTipo(tipo) {
 
     return traducciones[tipo] || tipo;
 }
-
-/*function mostrarInfoPokemon(pokemon) {
+/*
+function mostrarInfoPokemon(pokemon) {
     const colorPrincipal = TipoColor.obtenerColor(pokemon.tipos[0]);
 
     const tiposHTML = pokemon.tipos.map(tipo => {
