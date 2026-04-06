@@ -1,6 +1,7 @@
 import { Pokemon } from './modelos/Pokemon.js';
 import { TipoColor } from './modelos/TipoColor.js';
 import { Servicios } from './servicios/Servicios.js';
+import { Renderizar } from './ui/Renderizar.js';
 import './ui/Sugerencias.js';
 import {iniciarEventosBusqueda} from './eventos/eventosBusqueda.js';
 
@@ -47,7 +48,7 @@ function traducirTipo(tipo) {
     return traducciones[tipo] || tipo;
 }
 
-function mostrarInfoPokemon(pokemon) {
+/*function mostrarInfoPokemon(pokemon) {
     const colorPrincipal = TipoColor.obtenerColor(pokemon.tipos[0]);
 
     const tiposHTML = pokemon.tipos.map(tipo => {
@@ -73,6 +74,16 @@ function mostrarInfoPokemon(pokemon) {
     `;
 
     
+}*/
+
+function mostrarInfoPokemon(pokemon) {
+    const colorPrincipal = TipoColor.obtenerColor(pokemon.tipos[0]);
+    
+    // Aplicamos el color de fondo a la sección
+    sectionInfoPokemon.style.backgroundColor = colorPrincipal + '20';
+
+    // Sustituimos el HTML manual por el método de la clase
+    sectionInfoPokemon.innerHTML = Renderizar.crearTarjeta(pokemon);
 }
 
 iniciarEventosBusqueda(btnBuscar,inputNombrePokemon,buscarPokemon,sectionInfoPokemon);
