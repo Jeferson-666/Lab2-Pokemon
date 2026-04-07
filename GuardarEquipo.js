@@ -3,12 +3,16 @@ export class GuardarEquipo {
     static KEY = "mis_pokemon";
 
     static guardarEquipoPokemones(pokemones) {
+
+        //guadar todo de un solo
         if (validarGuardados()) {
             localStorage.setItem(this.KEY, JSON.stringify(pokemones));
         }
+
     }
 
     static validos(pokemones) {
+
         if (pokemones.length > 6) return false;
         const revisados = new Set();
         const duplicados = new Set();
@@ -24,6 +28,7 @@ export class GuardarEquipo {
             }
         });
         return true;;
+
     }
 
 }
