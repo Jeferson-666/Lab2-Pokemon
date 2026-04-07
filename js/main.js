@@ -4,10 +4,14 @@ import { Servicios } from './servicios/Servicios.js';
 import { Renderizar } from './ui/Renderizar.js';
 import './ui/Sugerencias.js';
 import {iniciarEventosBusqueda} from './eventos/eventosBusqueda.js';
+import {GuardarEquipo} from './eventos/guardarEquipo.js';
 
 const btnBuscar = document.getElementById('btnBuscar');
+const btnCapturar = document.getElementById('btnCapturar');
+const btnVerEquipo = document.getElementById('btnVerEquipo');
 const inputNombrePokemon = document.getElementById('pokemonName');
 const sectionInfoPokemon = document.getElementById('infoPokemon');
+let pokemon;
 
 async function buscarPokemon(nombre) {
     sectionInfoPokemon.innerHTML=`<div class="spinner"></div>`;
@@ -15,12 +19,21 @@ async function buscarPokemon(nombre) {
 
     try {
         const datos = await Servicios.obtenerPokemon(nombre);
-        const pokemon = Pokemon.datosAPokemon(datos);
+        pokemon = Pokemon.datosAPokemon(datos);
         mostrarInfoPokemon(pokemon);
+        
     } catch (error) {
         sectionInfoPokemon.innerHTML = '<p>Ocurrió un error o el Pokémon no existe.</p>';
         sectionInfoPokemon.className = 'info-pokemon';
     }
+}
+function capturarPokemon() {
+    alert('Funcionalidad de mostrar equipo aún no implementada.');
+    //GuardarEquipo.guardarEquipoPokemones(pokemon.convertirAJSON());
+}
+
+function mostrarEquipo() {
+    alert('Funcionalidad de mostrar equipo aún no implementada.');
 }
 
 function traducirTipo(tipo) {
@@ -47,34 +60,6 @@ function traducirTipo(tipo) {
 
     return traducciones[tipo] || tipo;
 }
-/*
-function mostrarInfoPokemon(pokemon) {
-    const colorPrincipal = TipoColor.obtenerColor(pokemon.tipos[0]);
-
-    const tiposHTML = pokemon.tipos.map(tipo => {
-        const color = TipoColor.obtenerColor(tipo);
-        return `<span class="tipo-badge" style="background-color: ${color};">${traducirTipo(tipo)}</span>`;
-    }).join('');
-
-    sectionInfoPokemon.style.backgroundColor = colorPrincipal + '20';
-
-    sectionInfoPokemon.innerHTML = `
-        <div class="tarjeta-pokemon">
-            <img src="${pokemon.imagen}" alt="${pokemon.nombre}">
-            <h2>${pokemon.nombre}</h2>
-
-            <div class="datos-pokemon">
-                <div class="dato"><strong>Tipos:</strong></div>
-                <div class="tipos">${tiposHTML}</div>
-
-                <div class="dato"><strong>Habilidad:</strong> ${pokemon.habilidad}</div>
-                <div class="dato"><strong>Primer movimiento:</strong> ${pokemon.movimiento}</div>
-            </div>
-        </div>
-    `;
-
-    
-}*/
 
 function mostrarInfoPokemon(pokemon) {
     const colorPrincipal = TipoColor.obtenerColor(pokemon.tipos[0]);
@@ -87,3 +72,6 @@ function mostrarInfoPokemon(pokemon) {
 }
 
 iniciarEventosBusqueda(btnBuscar,inputNombrePokemon,buscarPokemon,sectionInfoPokemon);
+
+btnCapturar.addEventListener('click', capturarPokemon);
+btnVerEquipo.addEventListener('click', mostrarEquipo);
