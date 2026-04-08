@@ -6,13 +6,13 @@ export class Pokemon {
     // Constructor:
     constructor(nombre, tipos, habilidad, movimiento, imagen) {
         this.nombre = nombre;         // Nombre del Pokémon
-        this.tipos = tipos;           // Arreglo con todos los tipos
+        this.tipos = tipos;           // Tipos
         this.habilidad = habilidad;   // Habilidad 
         this.movimiento = movimiento; // Primer movimiento
-        this.imagen = imagen;         // URL de la imagen oficial
-    }//Fin de constructor
+        this.imagen = imagen;         // URL de la imagen 
+    }// Fin de constructor
 
-    // Metodo para convertir los datos a un objeto Pokemon 
+    // Método para convertir los datos a un objeto Pokemon 
     static datosAPokemon(datos) {
 
         // Extrae los tipos del Pokémon desde la API
@@ -41,7 +41,7 @@ export class Pokemon {
             movimiento,
             imagen
         );
-    }//Fin de método datosAPokemon 
+    }// Fin de método datosAPokemon 
 
     // Método para convertir un Pokémon en formato JSON 
     convertirAJSON() {
