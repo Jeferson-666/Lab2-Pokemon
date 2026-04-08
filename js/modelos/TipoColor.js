@@ -2,7 +2,7 @@
 
 //Clase para obtener color según tipo
 export class TipoColor {
-     //Mapa para los colores , así el código se hace más sencillo para darle mantenimiento y permite una escalabilidad senciila 
+     //Mapa para los colores , así el código es más escalable y permite un mantenimiento/cambio sencillo
     static colores = {
         normal: '#A8A77A',
         fire: '#EE8130',
@@ -24,7 +24,7 @@ export class TipoColor {
         fairy: '#D685AD'
     };//fin de mapa (tipo,color)
 
-//Método para obtener color , usa toLowerCase para evitar incompatibilidad con solicitudes de clases futuras y retorna un color blanco si no concuerda con algún tipo
+//Método para obtener color , usa toLowerCase para evitar incompatibilidad con solicitudes de clases futuras y retorna un color blanco si no concuerda con algún tipo del mapa
     static obtenerColor(tipo) {
         return this.colores[tipo.toLowerCase()] || '#D5D8DC';
     }//Fin de metodo obtener color 
