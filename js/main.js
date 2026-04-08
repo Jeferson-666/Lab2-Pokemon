@@ -42,9 +42,35 @@ function capturarPokemon() {
     const resultado = GuardarEquipo.agregarPokemon(pokemonActual.convertirAJSON());
     alert(resultado.mensaje);
 }
-
+//funcion para mostrar el equipo
 function mostrarEquipo() {
-    alert('Funcionalidad de mostrar equipo aún no implementada.');
+    const equipo = GuardarEquipo.obtenerEquipoPokemones();
+
+    sectionInfoPokemon.style.backgroundColor = 'white';
+
+    if (equipo.length === 0) {
+        sectionInfoPokemon.innerHTML = `
+            <div class="equipo-vacio">
+                <h2>Mi Equipo</h2>
+                <p>No has capturado Pokémon todavía.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const tarjetas = equipo.map(pokemon => Renderizar.crearMiniTarjeta(pokemon)).join('');
+
+    sectionInfoPokemon.innerHTML = `
+        <div class="equipo-pokemon">
+            <h2>Mi Equipo</h2>
+            <p>${equipo.length}/6 Pokémon capturados</p>
+            <div class="lista-equipo">
+                ${tarjetas}
+            </div>
+        </div>
+    `;
+
+    activarEventosEliminar();
 }
 
 /*funcion para activar los botones de eliminar que se crean
@@ -86,10 +112,10 @@ function traducirTipo(tipo) {
         steel: 'Acero',
         fairy: 'Hada'
     };
-
+    //si no existe el tipo por el operador or devolvería lo encontrado en la API
     return traducciones[tipo] || tipo;
 }
-
+//funcion para crear la tarjeta ubicado en renderizar
 function mostrarInfoPokemon(pokemon) {
     sectionInfoPokemon.style.backgroundColor = 'white';
     sectionInfoPokemon.innerHTML = Renderizar.crearTarjeta(pokemon);
