@@ -14,9 +14,13 @@ const sectionInfoPokemon = document.getElementById('infoPokemon');
 let pokemonActual = null;
 
 async function buscarPokemon(nombre) {
+    //Se pone el spinner de carga mientras responde la API
     sectionInfoPokemon.innerHTML=`<div class="spinner"></div>`;
     sectionInfoPokemon.className = 'info-pokemon';
-
+    /* en el try se captura los datos del pokemon, se convierte en un pokemon
+    y luego muestra se muestra la información como se modifica el mismo section
+    se quita el spinner de carga si algo falla tambien lo hace en el catch 
+    */
     try {
         const datos = await Servicios.obtenerPokemon(nombre);
         pokemonActual = Pokemon.datosAPokemon(datos);
@@ -41,7 +45,9 @@ function capturarPokemon() {
 function mostrarEquipo() {
     alert('Funcionalidad de mostrar equipo aún no implementada.');
 }
-
+/*funcion para traducir el tipo de pokemon usando el nombre que viene 
+de la API como clave y su traducción sería el valor 
+*/
 function traducirTipo(tipo) {
     const traducciones = {
         normal: 'Normal',
@@ -72,6 +78,7 @@ function mostrarInfoPokemon(pokemon) {
     sectionInfoPokemon.innerHTML = Renderizar.crearTarjeta(pokemon);
 }
 
+//agregamos todos los eventos a partir de esta linea
 iniciarEventosBusqueda(btnBuscar,inputNombrePokemon,buscarPokemon,sectionInfoPokemon);
 
 btnCapturar.addEventListener('click', capturarPokemon);
