@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2 - Pokémon</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Pokédex Informativa</h1>
+        <p>Busca un Pokémon y visualiza su información</p>
+    </header>
+
+    <main class="contenedor">
+        <section class="buscador">
+            <input type="text" id="pokemonName" list="pokemonSuggestions" placeholder="Ingrese el nombre del Pokémon">
+            <datalist id="pokemonSuggestions"></datalist>
+
+            <button id="btnBuscar">Buscar</button>
+            <button id="btnCapturar">Capturar</button>
+            <button id="btnVerEquipo">Ver Equipo</button>
+        </section>
+        <section id="infoPokemon" class="info-pokemon">
+            <p>Información de Pokémon</p>
+        </section>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
