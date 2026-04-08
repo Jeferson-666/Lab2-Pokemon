@@ -123,9 +123,10 @@ header p {
 }
 
 .spinner {
-    width: 35px;
-    height: 35px;
+    width: 55px;
+    height: 55px;
     border: solid 4px;
+    border-color: #e53935;
     border-right-color: transparent;
     border-radius: 50%;
     animation: Spin 1s linear infinite;
