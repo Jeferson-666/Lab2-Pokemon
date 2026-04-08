@@ -42,7 +42,7 @@ function capturarPokemon() {
     const resultado = GuardarEquipo.agregarPokemon(pokemonActual.convertirAJSON());
     alert(resultado.mensaje);
 }
-
+//funcion para mostrar el equipo
 function mostrarEquipo() {
     const equipo = GuardarEquipo.obtenerEquipoPokemones();
 
@@ -115,7 +115,7 @@ function traducirTipo(tipo) {
     //si no existe el tipo por el operador or devolvería lo encontrado en la API
     return traducciones[tipo] || tipo;
 }
-
+//funcion para crear la tarjeta ubicado en renderizar
 function mostrarInfoPokemon(pokemon) {
     sectionInfoPokemon.style.backgroundColor = 'white';
     sectionInfoPokemon.innerHTML = Renderizar.crearTarjeta(pokemon);
