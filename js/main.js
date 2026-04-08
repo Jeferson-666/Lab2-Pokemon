@@ -1,17 +1,17 @@
 import { Pokemon } from './modelos/Pokemon.js';
-import { TipoColor } from './modelos/TipoColor.js';
 import { Servicios } from './servicios/Servicios.js';
 import { Renderizar } from './ui/Renderizar.js';
 import './ui/Sugerencias.js';
-import {iniciarEventosBusqueda} from './eventos/eventosBusqueda.js';
-import {GuardarEquipo} from './eventos/guardarEquipo.js';
+import { iniciarEventosBusqueda } from './eventos/eventosBusqueda.js';
+import { GuardarEquipo } from './eventos/GuardarEquipo.js';
 
 const btnBuscar = document.getElementById('btnBuscar');
 const btnCapturar = document.getElementById('btnCapturar');
 const btnVerEquipo = document.getElementById('btnVerEquipo');
 const inputNombrePokemon = document.getElementById('pokemonName');
 const sectionInfoPokemon = document.getElementById('infoPokemon');
-let pokemon;
+
+let pokemonActual = null;
 
 
 async function buscarPokemon(nombre) {
@@ -24,21 +24,53 @@ async function buscarPokemon(nombre) {
     */
     try {
         const datos = await Servicios.obtenerPokemon(nombre);
-        pokemon = Pokemon.datosAPokemon(datos);
-        mostrarInfoPokemon(pokemon);
-        
+        pokemonActual = Pokemon.datosAPokemon(datos);
+        mostrarInfoPokemon(pokemonActual);
     } catch (error) {
+        pokemonActual = null;
         sectionInfoPokemon.innerHTML = '<p>Ocurrió un error o el Pokémon no existe.</p>';
-        sectionInfoPokemon.className = 'info-pokemon';
+        sectionInfoPokemon.style.backgroundColor = 'white';
     }
 }
+
 function capturarPokemon() {
-    alert('Funcionalidad de mostrar equipo aún no implementada.');
-    //GuardarEquipo.guardarEquipoPokemones(pokemon.convertirAJSON());
+    if (!pokemonActual) {
+        alert('Primero debes buscar un Pokémon.');
+        return;
+    }
+
+    const resultado = GuardarEquipo.agregarPokemon(pokemonActual.convertirAJSON());
+    alert(resultado.mensaje);
 }
 
 function mostrarEquipo() {
-    alert('Funcionalidad de mostrar equipo aún no implementada.');
+    const equipo = GuardarEquipo.obtenerEquipoPokemones();
+
+    sectionInfoPokemon.style.backgroundColor = 'white';
+
+    if (equipo.length === 0) {
+        sectionInfoPokemon.innerHTML = `
+            <div class="equipo-vacio">
+                <h2>Mi Equipo</h2>
+                <p>No has capturado Pokémon todavía.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const tarjetas = equipo.map(pokemon => Renderizar.crearMiniTarjeta(pokemon)).join('');
+
+    sectionInfoPokemon.innerHTML = `
+        <div class="equipo-pokemon">
+            <h2>Mi Equipo</h2>
+            <p>${equipo.length}/6 Pokémon capturados</p>
+            <div class="lista-equipo">
+                ${tarjetas}
+            </div>
+        </div>
+    `;
+
+    activarEventosEliminar();
 }
 /*funcion para traducir el tipo de pokemon usando el nombre que viene 
 de la API como clave y su traducción sería el valor 
@@ -69,12 +101,7 @@ function traducirTipo(tipo) {
 }
 
 function mostrarInfoPokemon(pokemon) {
-    const colorPrincipal = TipoColor.obtenerColor(pokemon.tipos[0]);
-    
-    // Aplicamos el color de fondo a la sección
-    sectionInfoPokemon.style.backgroundColor = colorPrincipal + '20';
-
-    // Sustituimos el HTML manual por el método de la clase
+    sectionInfoPokemon.style.backgroundColor = 'white';
     sectionInfoPokemon.innerHTML = Renderizar.crearTarjeta(pokemon);
 }
 
